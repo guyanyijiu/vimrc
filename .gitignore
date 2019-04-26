@@ -1,0 +1,4 @@
+plugged/
+autoload/
+tmp/undo/*
+.DS_Store
