@@ -1,19 +1,14 @@
 # vimrc
 
-## Install vim-plug
+## Dependencies
 ```
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+yum install the_silver_searcher
 ```
+
 ## Install vimrc
 ```
 git clone --depth=1 https://github.com/guyanyijiu/vimrc.git ~/.vim
 sh ~/.vim/install_full_vimrc.sh
-```
-
-## Dependencies
-```
-yum install the_silver_searcher
 ```
 
 ## Key Mappings
