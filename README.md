@@ -11,6 +11,16 @@ git clone --depth=1 https://github.com/guyanyijiu/vimrc.git ~/.vim
 sh ~/.vim/install_full_vimrc.sh
 ```
 
+## Install vim-plug
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+## Install plugins
+```
+:PlugInstall
+```
+
 ## Key Mappings
 
 Fast saving and quit
