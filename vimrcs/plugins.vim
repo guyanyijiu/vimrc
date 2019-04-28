@@ -12,6 +12,9 @@ Plug 'mileszs/ack.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'w0rp/ale'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'flazz/vim-colorschemes'
 
 call plug#end()
 
@@ -83,11 +86,13 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 " Forbid default mappings
-" let g:NERDCreateDefaultMappings = 0
-" nmap <leader>cc <Plug>NERDCommenterToggle
-" xmap <leader>cc <Plug>NERDCommenterToggle
-" nmap <leader>cu <Plug>NERDCommenterUncomment
-" xmap <leader>cu <Plug>NERDCommenterUncomment
+let g:NERDCreateDefaultMappings = 0
+nmap <leader>cc <Plug>NERDCommenterToggle
+xmap <leader>cc <Plug>NERDCommenterToggle
+nmap <leader>cu <Plug>NERDCommenterUncomment
+xmap <leader>cu <Plug>NERDCommenterUncomment
+nmap <leader>cs <Plug>NERDCommenterSexy
+xmap <leader>cs <Plug>NERDCommenterSexy
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
@@ -117,16 +122,6 @@ let g:lightline = {
             \ 'subseparator': { 'left': ' ', 'right': ' ' }
             \ }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => goyo and vimroom2
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <leader>z :Goyo<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => tabular
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>t :Tab /
-vmap <leader>t :Tab /
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
@@ -141,7 +136,7 @@ endif
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ack and put the cursor in the right position
-map <leader>g :Ack<Space>
+noremap <leader>a :Ack<Space>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
@@ -154,15 +149,44 @@ nnoremap <leader>l :Autoformat<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Goyo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" :Goyo
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tabular
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" :Tab /
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-colorschemes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme molokai
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => UltiSnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger="<tab>"
+" 使用 tab 切换下一个触发点，shit+tab 上一个触发点
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" 使用 UltiSnipsEdit 命令时垂直分割屏幕
+let g:UltiSnipsEditSplit="vertical"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ale syntax checker
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-\   'javascript': ['jshint'],
-\   'python': ['flake8'],
-\   'go': ['go', 'golint', 'errcheck']
-\}
+            \   'javascript': ['jshint'],
+            \   'python': ['flake8'],
+            \   'go': ['go', 'golint', 'errcheck']
+            \}
 
-nmap <silent> <leader>a <Plug>(ale_next_wrap)
+nmap <silent> <leader>sy <Plug>(ale_next_wrap)
 
 " Disabling highlighting
 let g:ale_set_highlights = 0
@@ -170,3 +194,14 @@ let g:ale_set_highlights = 0
 " Only run linting when saving the file
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType go nnoremap <leader>gn :cnext<cr>
+autocmd FileType go nnoremap <leader>gp :cprevious<cr>
+autocmd FileType go nnoremap <leader>gc :cclose<cr>
+autocmd FileType go nnoremap <leader>gb :GoBuild
+autocmd FileType go nnoremap <leader>gr :GoRun
+
