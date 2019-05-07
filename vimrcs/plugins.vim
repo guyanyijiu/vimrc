@@ -15,6 +15,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'flazz/vim-colorschemes'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -204,4 +205,10 @@ autocmd FileType go nnoremap <leader>gp :cprevious<cr>
 autocmd FileType go nnoremap <leader>gc :cclose<cr>
 autocmd FileType go nnoremap <leader>gb :GoBuild
 autocmd FileType go nnoremap <leader>gr :GoRun
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => auto-pair
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:AutoPairsShortcutJump = '<c-]>'
 
